@@ -1,0 +1,41 @@
+version: "3"
+
+volumes:
+  django_project_db_dev: {}
+  django_project_packages: {}
+
+services:
+  db:
+    image: postgres:9.6.7
+    volumes:
+      - django_project_db_dev:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=doubled
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_INITDB_ARGS=--encoding=UTF-8
+
+  django:
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile-dev
+    environment:
+      - DJANGO_DEBUG=True
+      - DJANGO_DB_HOST=db
+      - DJANGO_DB_PORT=5432
+      - DJANGO_DB_NAME=doubled
+      - DJANGO_DB_USERNAME=postgres
+      - DJANGO_DB_PASSWORD=postgres
+      - DJANGO_SECRET_KEY="5v9-s149sdp6qm^*!tn(gf*unee=2z(i9^d^ge1lc5@*ckbyy-"
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    links:
+      - db
+    command: /start-dev.sh
+    volumes:
+      - ./manage.py:/app/manage.py
+      - ./requirements.txt:/app/requirements.txt
+      - ./double_D:/app/double_D
+      - django_project_packages:/usr/local/lib/python3.6/site-packages/
