@@ -28,7 +28,7 @@ services:
       - DJANGO_DB_PASSWORD=postgres
       - DJANGO_SECRET_KEY="5v9-s149sdp6qm^*!tn(gf*unee=2z(i9^d^ge1lc5@*ckbyy-"
     ports:
-      - "8000:8000"
+      - "8080:8080"
     depends_on:
       - db
     links:

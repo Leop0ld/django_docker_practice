@@ -16,4 +16,4 @@ RUN     pip install -r requirements.txt
 ADD     ./double_D/         /app/double_D/
 RUN     ./manage.py collectstatic --noinput
 
-CMD ["gunicorn", "--workers=3". "--bind", "0:8000", "double_D.wsgi"]
+CMD ["gunicorn", "--workers=3", "--bind", "0:8080", "double_D.wsgi"]
