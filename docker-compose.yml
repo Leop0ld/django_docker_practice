@@ -39,4 +39,5 @@ services:
       - ./requirements.txt:/app/requirements.txt
       - ./double_D:/app/double_D
       - ./posts:/app/posts
+      - ./users:/app/users
       - django_project_packages:/usr/local/lib/python3.6/site-packages/
