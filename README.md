@@ -1,6 +1,6 @@
 # Django & Docker(Compose) (a.k.a Double D)
 
-> 참고한 곳: [raccoonyy님의 블로그](http://raccoonyy.github.io/docker-usages-for-dev-environment-setup/){:target="_blank"}
+> 참고한 곳: [raccoonyy님의 블로그](http://raccoonyy.github.io/docker-usages-for-dev-environment-setup/)
 
 주요 명령어
 
