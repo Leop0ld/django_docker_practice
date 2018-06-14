@@ -9,7 +9,9 @@ RUN \
 
 WORKDIR /app
 
-ADD     ./manage.py                       /app/
+ADD     ./requirements.txt                   /app/
+RUN     pip install -U pip
+ADD     ./manage.py                          /app/
 
 ADD     ./compose/django/start-dev.sh     /start-dev.sh
 

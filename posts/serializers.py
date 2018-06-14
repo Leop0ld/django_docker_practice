@@ -2,13 +2,17 @@ from rest_framework import serializers
 from .models import Post, Comment
 
 
-class PostSerializer(serializers.HyperlinkedModelSerializer):
+class PostSerializer(serializers.ModelSerializer):
+    author = serializers.StringRelatedField()
+
     class Meta:
         model = Post
-        fields = ('url', 'author', 'title', 'content')
+        fields = ('id', 'url', 'title', 'content', 'author')
 
 
-class CommentSerializer(serializers.HyperlinkedModelSerializer):
+class CommentSerializer(serializers.ModelSerializer):
+    author = serializers.StringRelatedField()
+
     class Meta:
         model = Comment
-        fields = ('url', 'author', 'content')
+        fields = ('id', 'url', 'content', 'author')
