@@ -16,10 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
+from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
+
 from posts import views as posts_views
 from users import views as users_views
 
 router = routers.DefaultRouter()
+
 router.register(r'users', users_views.UserViewSet)
 router.register(r'groups', users_views.GroupViewSet)
 router.register(r'posts', posts_views.PostViewSet)
@@ -28,5 +31,7 @@ router.register(r'comments', posts_views.CommentViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api-token-auth/', obtain_jwt_token),
+    path('api-token-refresh/', refresh_jwt_token),
     path('admin/', admin.site.urls),
 ]
